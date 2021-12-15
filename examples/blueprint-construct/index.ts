@@ -49,17 +49,22 @@ export default class BlueprintConstruct extends cdk.Construct {
         });
         // AddOns for the cluster.
         const addOns: Array<ssp.ClusterAddOn> = [
-            new ssp.addons.AppMeshAddOn(),
             prodBootstrapArgo,
-            new ssp.addons.CalicoAddOn(),
-            new ssp.addons.MetricsServerAddOn(),
-            new ssp.addons.ContainerInsightsAddOn(),
+            new ssp.addons.AppMeshAddOn(),
+            new ssp.addons.AwsForFluentBitAddOn(),
             new ssp.addons.AwsLoadBalancerControllerAddOn(),
-            new ssp.addons.SecretsStoreAddOn(),
-            new ssp.addons.SSMAgentAddOn(),
+            new ssp.addons.CalicoAddOn(),
+            new ssp.addons.ClusterAutoScalerAddOn(),
+            new ssp.addons.ContainerInsightsAddOn(),
+            new ssp.addons.CoreDnsAddOn(),
+            new ssp.addons.KubeProxyAddOn(),
+            new ssp.addons.MetricsServerAddOn(),
+            new ssp.addons.OpaGatekeeperAddOn(),
             new ssp.addons.NginxAddOn({ values: {
                 controller: { service: { create: false }}
             }}),
+            new ssp.addons.SecretsStoreAddOn(),
+            new ssp.addons.SSMAgentAddOn(),
             new ssp.addons.VeleroAddOn(),
             new ssp.addons.VpcCniAddOn(),
             new ssp.addons.CoreDnsAddOn(),
@@ -69,7 +74,6 @@ export default class BlueprintConstruct extends cdk.Construct {
         ];
 
         const blueprintID = `${blueprintProps.id}-dev`;
-
         const resourceProviders = new Map<string, ssp.ResourceProvider>()
             .set(ssp.GlobalResources.Vpc, new DirectVpcProvider(blueprintProps.vpc));
 
