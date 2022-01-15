@@ -53,11 +53,8 @@ export default class BlueprintConstruct extends cdk.Construct {
             new ssp.addons.AppMeshAddOn(),
             new ssp.addons.AwsForFluentBitAddOn(),
             new ssp.addons.AwsLoadBalancerControllerAddOn(),
-            new ssp.addons.CalicoAddOn(),
-            new ssp.addons.ClusterAutoScalerAddOn(),
+            new ssp.addons.CalicoAddOn(),   
             new ssp.addons.ContainerInsightsAddOn(),
-            new ssp.addons.CoreDnsAddOn(),
-            new ssp.addons.KubeProxyAddOn(),
             new ssp.addons.MetricsServerAddOn(),
             new ssp.addons.OpaGatekeeperAddOn(),
             new ssp.addons.NginxAddOn({ values: {
